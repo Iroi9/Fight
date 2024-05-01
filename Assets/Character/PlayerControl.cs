@@ -44,6 +44,15 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Dash"",
+                    ""type"": ""Value"",
+                    ""id"": ""4ac4c279-c027-4c9c-84a3-7c745aa0d816"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -90,6 +99,39 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
                     ""action"": ""Jump"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""2D Vector"",
+                    ""id"": ""31333495-50e5-4091-b920-96a28dca4838"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Dash"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""090bbca3-e8e9-4bc0-862d-243cc1447977"",
+                    ""path"": ""<Keyboard>/ctrl"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Dash"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""2280c512-6875-41ac-89b2-68d44a7d73e5"",
+                    ""path"": ""<Keyboard>/shift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Dash"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         }
@@ -100,6 +142,7 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
         m_Inputs = asset.FindActionMap("Inputs", throwIfNotFound: true);
         m_Inputs_Movement = m_Inputs.FindAction("Movement", throwIfNotFound: true);
         m_Inputs_Jump = m_Inputs.FindAction("Jump", throwIfNotFound: true);
+        m_Inputs_Dash = m_Inputs.FindAction("Dash", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -163,12 +206,14 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
     private List<IInputsActions> m_InputsActionsCallbackInterfaces = new List<IInputsActions>();
     private readonly InputAction m_Inputs_Movement;
     private readonly InputAction m_Inputs_Jump;
+    private readonly InputAction m_Inputs_Dash;
     public struct InputsActions
     {
         private @PlayerControl m_Wrapper;
         public InputsActions(@PlayerControl wrapper) { m_Wrapper = wrapper; }
         public InputAction @Movement => m_Wrapper.m_Inputs_Movement;
         public InputAction @Jump => m_Wrapper.m_Inputs_Jump;
+        public InputAction @Dash => m_Wrapper.m_Inputs_Dash;
         public InputActionMap Get() { return m_Wrapper.m_Inputs; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -184,6 +229,9 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
             @Jump.started += instance.OnJump;
             @Jump.performed += instance.OnJump;
             @Jump.canceled += instance.OnJump;
+            @Dash.started += instance.OnDash;
+            @Dash.performed += instance.OnDash;
+            @Dash.canceled += instance.OnDash;
         }
 
         private void UnregisterCallbacks(IInputsActions instance)
@@ -194,6 +242,9 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
             @Jump.started -= instance.OnJump;
             @Jump.performed -= instance.OnJump;
             @Jump.canceled -= instance.OnJump;
+            @Dash.started -= instance.OnDash;
+            @Dash.performed -= instance.OnDash;
+            @Dash.canceled -= instance.OnDash;
         }
 
         public void RemoveCallbacks(IInputsActions instance)
@@ -215,5 +266,6 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
     {
         void OnMovement(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
+        void OnDash(InputAction.CallbackContext context);
     }
 }

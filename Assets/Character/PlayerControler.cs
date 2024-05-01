@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -8,9 +9,12 @@ public class PlayerControler : MonoBehaviour
     private Rigidbody2D rb;
     private bool isGrounded;
     private int jumpCounter;
+    private int dashCounter;
     [SerializeField] private float movespeed;
     [SerializeField] private float jumpHeight;
-    Vector2 momentum;
+    [SerializeField] private float dashSpeed;
+    private Vector2 momentum;
+    Vector2 speed;
     void Start()
     {
       
@@ -25,9 +29,21 @@ public class PlayerControler : MonoBehaviour
     }
     private void FixedUpdate()
     {
-      
+        
+        if (isGrounded)
+        {
             rb.AddForce(momentum * movespeed);
+            dashCounter = 1;
+            
+        }
 
+        if (rb.velocity.x >= 3.0) {
+            rb.gravityScale = 0;
+        }
+        else
+        {
+            rb.gravityScale = 2;
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -52,15 +68,19 @@ public class PlayerControler : MonoBehaviour
 
     private void OnMovement(InputValue inputValue)
     {
-        //Remember for dash
-        //rb.velocity = inputValue.Get<Vector2>() * movespeed;
-        momentum = inputValue.Get<Vector2>();
         
+        momentum = inputValue.Get<Vector2>();
+    }
 
-
-
-
-
-
+    private void OnDash(InputValue inputValue)
+    {
+        if(isGrounded || dashCounter > 0){
+            rb.velocity = inputValue.Get<Vector2>() * dashSpeed;
+            if(!isGrounded)
+            {
+                dashCounter--;
+            }
+            
+        }
     }
 }
