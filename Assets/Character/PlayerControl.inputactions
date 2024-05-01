@@ -28,7 +28,7 @@
                 {
                     "name": "2D Vector",
                     "id": "56f4f115-1a6b-426d-98b5-27511cdeee44",
-                    "path": "2DVector(mode=1)",
+                    "path": "2DVector",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -37,8 +37,8 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "left",
-                    "id": "9fcded3a-6a51-4907-8d4c-86157ca1171a",
+                    "name": "Left",
+                    "id": "e1ce3855-30a6-4c30-99ce-08349a602f89",
                     "path": "<Keyboard>/leftArrow",
                     "interactions": "",
                     "processors": "",
@@ -48,8 +48,8 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "right",
-                    "id": "b85fffa5-bea5-4876-9ca0-02e394a71102",
+                    "name": "Right",
+                    "id": "498367ab-37ee-4638-9e8b-2f872fc1c12e",
                     "path": "<Keyboard>/rightArrow",
                     "interactions": "",
                     "processors": "",

@@ -395,7 +395,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -187989655475474567, guid: 6b0978657a0796342aa8bf500d141785, type: 3}
       propertyPath: movespeed
-      value: 5
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: -187989655475474567, guid: 6b0978657a0796342aa8bf500d141785, type: 3}
+      propertyPath: jumpHeight
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: -187989655475474567, guid: 6b0978657a0796342aa8bf500d141785, type: 3}
+      propertyPath: inputAction.m_Name
+      value: Input
       objectReference: {fileID: 0}
     - target: {fileID: 279623734761382686, guid: 6b0978657a0796342aa8bf500d141785, type: 3}
       propertyPath: m_LocalPosition.x
@@ -440,6 +448,14 @@ PrefabInstance:
     - target: {fileID: 1760621762636498891, guid: 6b0978657a0796342aa8bf500d141785, type: 3}
       propertyPath: m_Name
       value: Dynamic Sprite
+      objectReference: {fileID: 0}
+    - target: {fileID: 4579271395102266490, guid: 6b0978657a0796342aa8bf500d141785, type: 3}
+      propertyPath: m_Mass
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4579271395102266490, guid: 6b0978657a0796342aa8bf500d141785, type: 3}
+      propertyPath: m_LinearDrag
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4579271395102266490, guid: 6b0978657a0796342aa8bf500d141785, type: 3}
       propertyPath: m_Constraints
