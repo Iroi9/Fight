@@ -25,19 +25,12 @@ public class PlayerControler : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if (isGrounded)
-        {
-            if (momentum.x > 5)
-            {
-                momentum.x = 5;
-                
-            }
+      
             rb.AddForce(momentum * movespeed);
 
-        }
     }
 
-    private void OnCollisionEnter2D(UnityEngine.Collision2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.contacts.Length >= 1)
         {
