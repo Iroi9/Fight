@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Windows;
 
 public class PlayerControler : MonoBehaviour
 {
@@ -14,18 +15,23 @@ public class PlayerControler : MonoBehaviour
     [SerializeField] private float jumpHeight;
     [SerializeField] private float dashSpeed;
     private Vector2 momentum;
-    Vector2 speed;
+    private Queue<string> inputBuffer = new Queue<string>();
+    int inputBufferSize;
     void Start()
     {
-      
-        rb = GetComponent<Rigidbody2D>();
 
+        rb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
-       
+        if (inputBufferSize == 30)
+        {
+            inputBuffer.Clear();
+        }
+
+        inputBufferSize++;
     }
     private void FixedUpdate()
     {
@@ -62,6 +68,8 @@ public class PlayerControler : MonoBehaviour
         rb.AddForce(Vector2.up * jumpHeight, ForceMode2D.Impulse);
         isGrounded = false;
         jumpCounter--;
+            inputBuffer.Enqueue("Up");
+            Debug.Log("Up");
         }
         
     }
@@ -70,17 +78,47 @@ public class PlayerControler : MonoBehaviour
     {
         
         momentum = inputValue.Get<Vector2>();
+
+        if (rb.velocity.x > 0.0)
+        {
+            inputBuffer.Enqueue("Right");
+            Debug.Log("Right");
+
+        }
+        else if (rb.velocity.x < 0.0)
+
+        {
+           
+            inputBuffer.Enqueue("Left");
+            Debug.Log("Left");
+        }
     }
 
     private void OnDash(InputValue inputValue)
     {
-        if(isGrounded || dashCounter > 0){
+        
+
+        if (isGrounded || dashCounter > 0){
+            
             rb.velocity = inputValue.Get<Vector2>() * dashSpeed;
-            if(!isGrounded)
+            if(!isGrounded || rb.velocity.x != 0.0)
             {
                 dashCounter--;
             }
             
         }
+       
+            if (rb.velocity.x > 0.0) {
+                inputBuffer.Enqueue("Control");
+                Debug.Log("Control");
+
+            }else if (rb.velocity.x < 0.0)
+            
+            {
+                inputBuffer.Enqueue("Shift");
+                Debug.Log("Shift");
+            }
+        
+       
     }
 }

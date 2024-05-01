@@ -394,6 +394,10 @@ PrefabInstance:
       value: Inputs
       objectReference: {fileID: 0}
     - target: {fileID: -187989655475474567, guid: 6b0978657a0796342aa8bf500d141785, type: 3}
+      propertyPath: dashSpeed
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: -187989655475474567, guid: 6b0978657a0796342aa8bf500d141785, type: 3}
       propertyPath: movespeed
       value: 20
       objectReference: {fileID: 0}
@@ -401,6 +405,10 @@ PrefabInstance:
       propertyPath: jumpHeight
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: -187989655475474567, guid: 6b0978657a0796342aa8bf500d141785, type: 3}
+      propertyPath: inputActions
+      value: 
+      objectReference: {fileID: -944628639613478452, guid: 5b9db65542bf416448a9fd46ba2a7e55, type: 3}
     - target: {fileID: -187989655475474567, guid: 6b0978657a0796342aa8bf500d141785, type: 3}
       propertyPath: inputAction.m_Name
       value: Input
@@ -460,6 +468,10 @@ PrefabInstance:
     - target: {fileID: 4579271395102266490, guid: 6b0978657a0796342aa8bf500d141785, type: 3}
       propertyPath: m_Constraints
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4579271395102266490, guid: 6b0978657a0796342aa8bf500d141785, type: 3}
+      propertyPath: m_GravityScale
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

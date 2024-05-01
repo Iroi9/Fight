@@ -102,7 +102,7 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""2D Vector"",
-                    ""id"": ""31333495-50e5-4091-b920-96a28dca4838"",
+                    ""id"": ""ec382e1a-e4d9-4a5b-82e9-48a37dd0b5f8"",
                     ""path"": ""2DVector"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -113,8 +113,8 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""left"",
-                    ""id"": ""090bbca3-e8e9-4bc0-862d-243cc1447977"",
-                    ""path"": ""<Keyboard>/ctrl"",
+                    ""id"": ""ac1dd5c1-5e72-4a20-a1e9-af13c3a650b8"",
+                    ""path"": ""<Keyboard>/shift"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -124,8 +124,8 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""right"",
-                    ""id"": ""2280c512-6875-41ac-89b2-68d44a7d73e5"",
-                    ""path"": ""<Keyboard>/shift"",
+                    ""id"": ""868feb4e-4041-4859-a3ed-bd756bc0edde"",
+                    ""path"": ""<Keyboard>/ctrl"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
